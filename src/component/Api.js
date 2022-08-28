@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect, } from 'react';
+import  ReactDOM  from 'react-dom';
 
-const infofromApi = ()=>{
+
+function Tabledata (){
+
+  const [objects, setObjects] = useState([]);
+
+  const fetchData = ()=>{
+
     const apiurl = 'http://localhost:5000/getData';
-    fetch(apiurl)
-      .then((response) => response.json())
-      .then((data) => console.log('This is your data', data));
+      fetch(apiurl)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
+  }
+
+  useEffect( ()=>{
+    fetchData();
+  },[]);
+
 }
-export default infofromApi;
+export default Tabledata;
